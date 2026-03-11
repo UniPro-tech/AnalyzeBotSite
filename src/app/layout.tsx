@@ -38,7 +38,7 @@ export default function RootLayout({
             <ul className="flex space-x-4">
               <li>
                 <Link
-                  href="#"
+                  href="/"
                   className="underline hover:no-underline hover:text-blue-400"
                 >
                   ホーム
@@ -62,7 +62,7 @@ export default function RootLayout({
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/invite"
                   className="underline hover:no-underline hover:text-blue-400"
                 >
                   導入する
