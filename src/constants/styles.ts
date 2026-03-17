@@ -38,7 +38,8 @@ export const HeaderFooterStyles = {
   base: {
     // Use Tailwind arbitrary value classes that reference CSS variables.
     // Keep the classes literal so Tailwind JIT can detect them.
-    common: `w-full py-6 bg-(--hero-background) text-(--hero-headline) p-4 flex items-center`,
+    wrapper: `w-full py-6 bg-(--hero-background) text-(--hero-headline) p-4 flex items-center`,
+    common: `w-full max-w-6xl mx-auto flex items-center`,
     header: `justify-between flex-row`,
     footer: `text-center flex-col justify-center space-y-8`,
   },
