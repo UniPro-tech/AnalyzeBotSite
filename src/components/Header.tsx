@@ -10,7 +10,9 @@ export default function Header() {
       <div
         className={`${HeaderFooterStyles.base.common} ${HeaderFooterStyles.base.header}`}
       >
-        <h1 className="text-2xl font-bold">活動解析くん(仮)</h1>
+        <h1 className="text-2xl font-bold">
+          <Link href="/">活動解析くん(仮)</Link>
+        </h1>
         <nav className="flex flex-row items-center space-x-2">
           <ul className="flex space-x-4">
             <li>
