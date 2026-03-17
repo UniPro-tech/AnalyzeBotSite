@@ -75,3 +75,14 @@ export const HomeStyles = {
     emptyText: `rounded-xl bg-(--primary-card-background) px-5 py-6 text-(--primary-paragraph)`,
   },
 };
+
+export const PrimaryStyles = {
+  wrapper: `w-full py-20 bg-(--primary-background) text-(--primary-headline) p-4`,
+  layouts: {
+    imageSide: `max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8`,
+  },
+  headline: `text-4xl font-bold`,
+  subHeadline: `text-2xl text-(--primary-sub-headline)`,
+  paragraph: `text-lg text-(--primary-paragraph)`,
+  button: `px-6 py-3 bg-(--primary-button) text-(--primary-button-text) rounded-lg hover:bg-(--primary-button-hover) transition-colors cursor-pointer`,
+};
