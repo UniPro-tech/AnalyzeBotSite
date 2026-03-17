@@ -119,6 +119,36 @@ export default function HowToUse() {
           </div>
         </div>
       </section>
+      <section id="optout" className={HeroStyles.wrapper}>
+        <div className={HeroStyles.layouts.imageSide}>
+          <div className="w-full lg:w-[44%]">
+            <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
+              <h2 className={`${HeroStyles.headline} mb-4`}>
+                オプトアウトについて
+              </h2>
+              <p className={`${HeroStyles.paragraph} mb-8`}>
+                活動解析くん(仮)はユーザーの活動データを解析するツールですが、ユーザーはいつでもオプトアウトできます。オプトアウトすると、そのユーザーのデータは解析されなくなります。
+              </p>
+              <p className={`${PrimaryStyles.paragraph}`}>
+                オプトアウトはユーザー単位のみならず、特定のチャンネルに対して行うこともできます。
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full lg:w-[56%]">
+            <div className="relative mx-auto max-w-3xl">
+              <Image
+                src="/imgs/sample/optout_01.png"
+                alt="Opt-out Example"
+                width={1200}
+                height={800}
+                style={{ objectFit: "cover" }}
+                className="w-full h-auto rounded-[20px] border border-black/10 bg-white"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
