@@ -26,7 +26,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#" className={`${HeaderFooterStyles.link}`}>
+              <Link href="/commands" className={`${HeaderFooterStyles.link}`}>
                 コマンド一覧
               </Link>
             </li>
