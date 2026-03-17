@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
+import Link from "next/link";
 import HeroSlideshow from "../components/HeroSlideshow";
 import { HomeStyles } from "../constants/styles";
-import Link from "next/link";
 
 type Post = {
   id: string;
