@@ -38,10 +38,16 @@ export default function Footer() {
               <Link href="#" className={`${HeaderFooterStyles.link}`}>
                 使い方を見る
               </Link>
-              <Link href="#" className={`${HeaderFooterStyles.link}`}>
+              <Link
+                href="/legal/terms"
+                className={`${HeaderFooterStyles.link}`}
+              >
                 利用規約
               </Link>
-              <Link href="#" className={`${HeaderFooterStyles.link}`}>
+              <Link
+                href="/legal/privacy"
+                className={`${HeaderFooterStyles.link}`}
+              >
                 プライバシー・ポリシー
               </Link>
             </nav>
