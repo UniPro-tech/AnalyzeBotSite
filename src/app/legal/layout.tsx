@@ -3,7 +3,7 @@ const proseBaseClassName = [
   "text-zinc-700 prose-p:leading-8 prose-li:leading-8 prose-strong:text-zinc-950",
   "prose-headings:font-semibold prose-headings:text-zinc-950",
   "prose-a:font-medium prose-a:text-sky-700 prose-a:underline prose-a:decoration-sky-300 prose-a:underline-offset-4",
-  "hover:prose-a:text-sky-500 hover:prose-a:decoration-sky-500",
+  "hover:prose-a:text-sky-700 hover:prose-a:text-sky-700/80",
 ].join(" ");
 
 const responsiveClassName = [
