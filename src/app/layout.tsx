@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,45 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-gray-800 text-white p-4 flex items-center justify-between flex-row">
-          <h1 className="text-2xl font-bold">活動解析くん(仮)</h1>
-          <nav className="flex flex-row items-center space-x-2">
-            <ul className="flex space-x-4">
-              <li>
-                <Link
-                  href="/"
-                  className="underline hover:no-underline hover:text-blue-400"
-                >
-                  ホーム
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="underline hover:no-underline hover:text-blue-400"
-                >
-                  使い方
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="underline hover:no-underline hover:text-blue-400"
-                >
-                  コマンド一覧
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/invite"
-                  className="underline hover:no-underline hover:text-blue-400"
-                >
-                  導入する
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         {children}
         <Footer />
       </body>
