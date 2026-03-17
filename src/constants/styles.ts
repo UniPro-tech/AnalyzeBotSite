@@ -50,7 +50,7 @@ export const HeaderFooterStyles = {
 export const HeroStyles = {
   wrapper: `w-full py-20 bg-(--hero-background) text-(--hero-headline) p-4`,
   layouts: {
-    imageSide: `max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 px-4`,
+    imageSide: `max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8`,
   },
   content: `max-w-6xl mx-auto flex flex-col items-center text-center space-y-8`,
   headline: `text-4xl font-bold`,
