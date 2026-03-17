@@ -55,5 +55,5 @@ export const HeroStyles = {
   content: `max-w-6xl mx-auto flex flex-col items-center text-center space-y-8`,
   headline: `text-4xl font-bold`,
   paragraph: `text-lg text-(--hero-paragraph)`,
-  button: `px-6 py-3 bg-(--hero-button) text-(--hero-button-text) rounded-lg hover:bg-(--hero-button-hover) transition-colors`,
+  button: `px-6 py-3 bg-(--hero-button) text-(--hero-button-text) rounded-lg hover:bg-(--hero-button-hover) transition-colors cursor-pointer`,
 };

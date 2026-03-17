@@ -31,6 +31,8 @@ export default function HeroSlideshow() {
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
   const next = () => setIndex((i) => (i + 1) % slides.length);
 
+  const controlButtonClassName = `flex h-10 w-10 items-center justify-center rounded-full bg-white text-(--hero-headline) transition-transform duration-200 hover:scale-105 cursor-pointer`;
+
   return (
     <section id="hero" className={HeroStyles.wrapper}>
       <div className={HeroStyles.layouts.imageSide}>
@@ -98,7 +100,7 @@ export default function HeroSlideshow() {
                       type="button"
                       onClick={prev}
                       aria-label="前のスライド"
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-(--hero-headline) transition-transform duration-200 hover:scale-105"
+                      className={controlButtonClassName}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +120,7 @@ export default function HeroSlideshow() {
                       type="button"
                       onClick={next}
                       aria-label="次のスライド"
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-(--hero-headline) transition-transform duration-200 hover:scale-105"
+                      className={controlButtonClassName}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
