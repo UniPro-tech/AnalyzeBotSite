@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,9 +73,7 @@ export default function RootLayout({
           </nav>
         </header>
         {children}
-        <footer className="bg-gray-800 text-white p-4 text-center">
-          <p>&copy; 2024 活動解析くん(仮). All rights reserved.</p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
