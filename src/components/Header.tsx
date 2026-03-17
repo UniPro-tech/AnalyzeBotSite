@@ -21,7 +21,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#" className={`${HeaderFooterStyles.link}`}>
+              <Link href="/howto" className={`${HeaderFooterStyles.link}`}>
                 使い方
               </Link>
             </li>

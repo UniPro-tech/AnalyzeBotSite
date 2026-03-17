@@ -43,10 +43,10 @@ export default function HeroSlideshow() {
               Discordサーバーの活動を解析するツールです。
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <Link href="/invite" className={HeroStyles.button}>
+              <Link href="/invite" className={`${HeroStyles.button}`}>
                 導入する
               </Link>
-              <Link href="#" className={HeroStyles.button}>
+              <Link href="/howto" className={HeroStyles.button}>
                 使い方を見る
               </Link>
             </div>

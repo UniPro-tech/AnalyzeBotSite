@@ -35,8 +35,8 @@ export default function Footer() {
               <Link href="/invite" className={`${HeaderFooterStyles.link}`}>
                 導入する
               </Link>
-              <Link href="#" className={`${HeaderFooterStyles.link}`}>
-                使い方を見る
+              <Link href="/howto" className={`${HeaderFooterStyles.link}`}>
+                使い方
               </Link>
               <Link
                 href="/legal/terms"
