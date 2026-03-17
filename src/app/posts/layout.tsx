@@ -1,3 +1,7 @@
+"use client";
+
+import { useSelectedLayoutSegment } from "next/navigation";
+
 const proseBaseClassName = [
   "prose prose-neutral w-full max-w-none",
   "text-zinc-700 prose-p:leading-8 prose-li:leading-8 prose-strong:text-zinc-950",
@@ -40,6 +44,12 @@ const richElementClassName = [
 ].join(" ");
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
+  const segment = useSelectedLayoutSegment();
+
+  if (segment === null) {
+    return <>{children}</>;
+  }
+
   return (
     <main className="flex w-full justify-center px-4 sm:px-6 lg:px-8">
       <article

@@ -57,3 +57,21 @@ export const HeroStyles = {
   paragraph: `text-lg text-(--hero-paragraph)`,
   button: `px-6 py-3 bg-(--hero-button) text-(--hero-button-text) rounded-lg hover:bg-(--hero-button-hover) transition-colors cursor-pointer`,
 };
+
+export const HomeStyles = {
+  news: {
+    section: `w-full max-w-6xl px-4 py-12`,
+    heading: `text-3xl font-bold mb-6 text-(--primary-headline)`,
+    list: `space-y-3 text-(--primary-paragraph)`,
+    item: `rounded-xl bg-(--primary-card-background) px-5 py-4`,
+    title: `font-semibold text-lg text-(--primary-card-foreground) no-underline hover:text-(--primary-button) hover:underline transition-colors`,
+    meta: `mt-1 text-sm text-(--primary-sub-headline)`,
+    description: `mt-3 leading-relaxed text-(--primary-card-paragraph)`,
+    actionRow: `mt-4`,
+    detailButton: `inline-block rounded-lg bg-(--primary-button) px-4 py-2 text-sm font-semibold text-(--primary-button-text) no-underline transition-opacity hover:opacity-85`,
+    pagination: `mt-8 flex flex-wrap items-center justify-center gap-2`,
+    pageButton: `inline-block rounded-lg border border-(--primary-button) px-3 py-2 text-sm font-semibold text-(--primary-headline) no-underline transition-colors hover:bg-(--primary-card-background)`,
+    pageButtonActive: `bg-(--primary-button) text-(--primary-button-text)`,
+    emptyText: `rounded-xl bg-(--primary-card-background) px-5 py-6 text-(--primary-paragraph)`,
+  },
+};
