@@ -9,7 +9,7 @@ export default function PostPage() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       <meta
         httpEquiv="refresh"
-        content="0; URL='https://discord.com/oauth2/authorize?client_id=1140576058765234238&permissions=4503599627570320&integration_type=0&scope=applications.commands+bot'"
+        content="0; URL='https://discord.com/oauth2/authorize?client_id=1480956404880904232&permissions=1119778761936&integration_type=0&scope=bot+applications.commands'"
       />
       <span>リダイレクト中...</span>
     </main>
