@@ -36,14 +36,12 @@ export const colors: ColorConfigs = {
 
 export const HeaderFooterStyles = {
   base: {
-    // Use Tailwind arbitrary value classes that reference CSS variables.
-    // Keep the classes literal so Tailwind JIT can detect them.
-    wrapper: `w-full py-6 bg-(--hero-background) text-(--hero-headline) p-4 flex items-center`,
-    common: `w-full max-w-6xl mx-auto flex items-center`,
-    header: `justify-between flex-row`,
+    wrapper: `w-full py-6 bg-(--hero-background) text-(--hero-headline) px-4 flex items-center`,
+    common: `w-full max-w-6xl mx-auto flex gap-4 sm:gap-0`,
+    header: `flex-col sm:flex-row items-start sm:items-center justify-between`,
     footer: `text-center flex-col justify-center space-y-8`,
   },
-  link: `font-bold hover:underline no-underline hover:text-(--hero-button)`,
+  link: `font-bold hover:underline no-underline hover:text-(--hero-button) transition-colors`,
   paragraph: `text-left text-(--hero-paragraph)`,
 };
 

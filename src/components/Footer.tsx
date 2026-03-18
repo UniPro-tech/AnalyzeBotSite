@@ -6,7 +6,7 @@ import { HeaderFooterStyles } from "@/constants/styles";
 export const dynamic = "force-static";
 
 const upperItemClassName =
-  "mb-4 md:mb-0 flex flex-col items-start w-[30%] h-full";
+  "mb-4 md:mb-0 flex flex-col items-start w-full md:w-[30%] h-full";
 
 export default function Footer() {
   return (
@@ -16,10 +16,12 @@ export default function Footer() {
       >
         <div
           id="footer-upper"
-          className="flex flex-col md:flex-row justify-between items-start max-w-6xl px-2 w-full"
+          className="flex flex-col md:flex-row justify-between items-start max-w-6xl px-4 sm:px-2 w-full gap-4 md:gap-0"
         >
           <div id="footer-left" className={`${upperItemClassName}`}>
-            <h4 className="text-lg font-bold mb-2">活動解析くん(仮)</h4>
+            <h4 className="text-base sm:text-lg font-bold mb-2">
+              活動解析くん(仮)
+            </h4>
             <p className={`${HeaderFooterStyles.paragraph} wrap-`}>
               Discordサーバーの活動を解析するツールです。
               <br />
@@ -31,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
           <div id="footer-center" className={`${upperItemClassName}`}>
-            <nav className="flex flex-col space-y-2 items-start">
+            <nav className="flex flex-col space-y-2 items-start w-full">
               <Link href="/invite" className={`${HeaderFooterStyles.link}`}>
                 導入する
               </Link>
@@ -53,19 +55,21 @@ export default function Footer() {
             </nav>
           </div>
           <div id="footer-right" className={`${upperItemClassName}`}>
-            <h2 className="text-lg font-bold mb-2">関連リンク</h2>
+            <h2 className="text-base sm:text-lg font-bold mb-2">関連リンク</h2>
             <Link href="https://uniproject.jp">
               <Image
                 src={"/imgs/common/powered_by_unipro_Black.webp"}
                 alt="Powered by UniProject"
                 width={200}
                 height={50}
+                sizes="(min-width: 640px) 200px, 160px"
+                className="w-auto h-auto"
               />
             </Link>
           </div>
         </div>
         <div id="footer-under">
-          <span>
+          <span className="text-xs sm:text-sm">
             &copy;{" "}
             {new Date().getFullYear() > 2026
               ? `2026-${new Date().getFullYear()}`
