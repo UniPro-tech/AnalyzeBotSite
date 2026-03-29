@@ -72,6 +72,17 @@ const COMMAND_DATA: CommandData[] = [
       },
     ],
   },
+  {
+    name: "utils",
+    subCommands: [
+      {
+        name: "sudachi_pos",
+        description: "Sudachiの形態素分析結果を表示します。",
+        usage: "/utils sudachi_pos [options]",
+        example: "/utils sudachi_pos text:解析対象のテキスト mode:A(短単位)",
+      },
+    ],
+  },
 ];
 
 export default function CommandList() {
