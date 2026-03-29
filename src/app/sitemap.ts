@@ -7,43 +7,49 @@ export const BASE_URL = "https://analyze-bot.uniproject.jp";
 const STATIC_URLs: MetadataRoute.Sitemap = [
   {
     url: `${BASE_URL}/`,
-    lastModified: getLastModifiedDate("src/app/page.tsx"),
+    lastModified: getLastModifiedDate("src/app/page.tsx").toISOString(),
     changeFrequency: "monthly",
     priority: 1,
   },
   {
-    url: `${BASE_URL}/about`,
-    lastModified: getLastModifiedDate("src/app/about/page.tsx"),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  },
-  {
     url: `${BASE_URL}/commands`,
-    lastModified: getLastModifiedDate("src/app/commands/page.tsx"),
+    lastModified: getLastModifiedDate(
+      "src/app/commands/page.tsx",
+    ).toISOString(),
     changeFrequency: "monthly",
     priority: 0.6,
   },
   {
     url: `${BASE_URL}/posts`,
-    lastModified: getLastModifiedDate("src/app/posts/page.tsx"),
+    lastModified: getLastModifiedDate("src/app/posts/page.tsx").toISOString(),
     changeFrequency: "weekly",
     priority: 0.6,
   },
   {
     url: `${BASE_URL}/howto`,
-    lastModified: getLastModifiedDate("src/app/howto/page.tsx"),
+    lastModified: getLastModifiedDate("src/app/howto/page.tsx").toISOString(),
     changeFrequency: "monthly",
     priority: 0.8,
   },
   {
     url: `${BASE_URL}/invite`,
-    lastModified: getLastModifiedDate("src/app/invite/page.tsx"),
+    lastModified: getLastModifiedDate("src/app/invite/page.tsx").toISOString(),
     changeFrequency: "monthly",
     priority: 0.8,
   },
   {
-    url: `${BASE_URL}/legal`,
-    lastModified: getLastModifiedDate("src/app/legal/page.tsx"),
+    url: `${BASE_URL}/legal/terms`,
+    lastModified: getLastModifiedDate(
+      "src/app/legal/terms/page.mdx",
+    ).toISOString(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
+  {
+    url: `${BASE_URL}/legal/privacy`,
+    lastModified: getLastModifiedDate(
+      "src/app/legal/privacy/page.mdx",
+    ).toISOString(),
     changeFrequency: "monthly",
     priority: 0.6,
   },
@@ -64,7 +70,7 @@ function getPostSitemapEntries(): MetadataRoute.Sitemap {
     if (fs.existsSync(filePath)) {
       entries.push({
         url: `${BASE_URL}/posts/${dir}`,
-        lastModified: getLastModifiedDate(filePath),
+        lastModified: getLastModifiedDate(filePath).toISOString(),
         changeFrequency: "monthly",
         priority: 0.5,
       });
