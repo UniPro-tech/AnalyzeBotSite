@@ -1,7 +1,11 @@
 import { headers } from "next/headers";
 import Link from "next/link";
+import Script from "next/script";
+import type { Product, WebSite, WithContext } from "schema-dts";
+import { getLastModifiedDate } from "@/libs/git";
 import HeroSlideshow from "../components/HeroSlideshow";
 import { HomeStyles } from "../constants/styles";
+import { BASE_URL } from "./sitemap";
 
 type Post = {
   id: string;
@@ -21,6 +25,42 @@ const formatPublishedAt = (publishedAt: string) => {
     month: "2-digit",
     day: "2-digit",
   }).format(date);
+};
+
+const jsonLd: WithContext<Product> = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "活動分析くん",
+  image: `${BASE_URL}/img/sample/daily_cloud_01.png`,
+  description: "Discordサーバーの活動を解析するDiscordBotです。",
+  audience: {
+    "@type": "Audience",
+    audienceType: "Discordサーバー管理者",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+    availability: "https://schema.org/InStock",
+  },
+};
+
+const jsonLdWebsite: WithContext<WebSite> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "活動分析くん公式サイト",
+  url: BASE_URL,
+  publisher: {
+    "@type": "Organization",
+    name: "デジタル創作サークルUniProject",
+    url: "https://uniproject.jp",
+  },
+  audience: {
+    "@type": "Audience",
+    audienceType: "Discordサーバー管理者",
+  },
+  datePublished: "2025-03-11",
+  dateModified: getLastModifiedDate("src/app/page.tsx").toISOString(),
 };
 
 export default async function Home() {
@@ -65,6 +105,20 @@ export default async function Home() {
           ))}
         </ul>
       </section>
+      <Script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LDを埋め込むために必要
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LDを埋め込むために必要
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdWebsite).replace(/</g, "\\u003c"),
+        }}
+      />
     </main>
   );
 }

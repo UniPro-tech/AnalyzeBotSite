@@ -2,7 +2,7 @@ import fs from "node:fs";
 import type { MetadataRoute } from "next";
 import { getLastModifiedDate } from "@/libs/git";
 
-const BASE_URL = "https://analyze-bot.uniproject.jp";
+export const BASE_URL = "https://analyze-bot.uniproject.jp";
 
 const STATIC_URLs: MetadataRoute.Sitemap = [
   {
