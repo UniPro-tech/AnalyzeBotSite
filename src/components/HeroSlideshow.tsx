@@ -73,6 +73,7 @@ export default function HeroSlideshow() {
                       fill
                       sizes="(min-width: 1024px) 32rem, 100vw"
                       priority={i === 0}
+                      fetchPriority="high"
                       style={{ objectFit: "cover" }}
                       className="w-full h-full"
                     />
