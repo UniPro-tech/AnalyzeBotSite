@@ -23,7 +23,7 @@ export default function Footer() {
               活動分析くん
             </h4>
             <p className={`${HeaderFooterStyles.paragraph} wrap-`}>
-              Discordサーバーの活動を解析するツールです。
+              Discordサーバーの活動を解析するDiscordBotです。
               <br />
               サーバーの活動状況を可視化し、
               <wbr />

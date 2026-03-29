@@ -40,7 +40,7 @@ export default function HeroSlideshow() {
           <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
             <h2 className={`${HeroStyles.headline} mb-4`}>活動分析くん</h2>
             <p className={`${HeroStyles.paragraph} mb-8`}>
-              Discordサーバーの活動を解析するツールです。
+              Discordサーバーの活動を解析するDiscordBotです。
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link href="/invite" className={`${HeroStyles.button}`}>
