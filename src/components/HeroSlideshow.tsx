@@ -38,7 +38,7 @@ export default function HeroSlideshow() {
       <div className={HeroStyles.layouts.imageSide}>
         <div className="w-full lg:w-[44%]">
           <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-            <h2 className={`${HeroStyles.headline} mb-4`}>活動解析くん(仮)</h2>
+            <h2 className={`${HeroStyles.headline} mb-4`}>活動分析くん</h2>
             <p className={`${HeroStyles.paragraph} mb-8`}>
               Discordサーバーの活動を解析するツールです。
             </p>

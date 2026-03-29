@@ -20,7 +20,7 @@ export default function Footer() {
         >
           <div id="footer-left" className={`${upperItemClassName}`}>
             <h4 className="text-base sm:text-lg font-bold mb-2">
-              活動解析くん(仮)
+              活動分析くん
             </h4>
             <p className={`${HeaderFooterStyles.paragraph} wrap-`}>
               Discordサーバーの活動を解析するツールです。

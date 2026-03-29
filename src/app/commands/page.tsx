@@ -9,7 +9,7 @@ interface CommandData {
 const COMMAND_DATA: CommandData[] = [
   {
     name: "about",
-    description: "活動解析くん(仮)の概要を表示します。",
+    description: "活動分析くんの概要を表示します。",
     usage: "/about",
   },
   {

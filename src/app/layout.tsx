@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "活動解析くん(仮) - Discordサーバーの活動を解析するツール",
-    template: "%s - 活動解析くん(仮)",
+    default: "Discordサーバーの活動を解析するBot - 活動分析くん",
+    template: "%s - 活動分析くん",
   },
   description:
-    "活動解析くん(仮)は、Discordサーバーの活動を解析するツールです。サーバーの活動状況を可視化し、管理者がサーバー運営に役立てることができます。",
+    "活動分析くんは、Discordサーバーの活動を解析するDiscordBotです。サーバーの活動状況を可視化し、管理者がサーバー運営に役立てることができます。",
 };
 
 export default function RootLayout({

@@ -10,7 +10,7 @@ export default function HowToUse() {
             <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
               <h2 className={`${HeroStyles.headline} mb-4`}>使い方</h2>
               <p className={`${HeroStyles.paragraph} mb-8`}>
-                活動解析くん(仮)の使い方を説明します。
+                活動分析くんの使い方を説明します。
               </p>
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function HowToUse() {
                 ワードクラウド生成
               </h2>
               <p className={`${PrimaryStyles.paragraph} mb-8`}>
-                これは活動解析くん(仮)が生成するワードクラウドの例です。ユーザーの活動データから重要なキーワードを抽出し、視覚的に表示します。
+                これは活動分析くんが生成するワードクラウドの例です。ユーザーの活動データから重要なキーワードを抽出し、視覚的に表示します。
               </p>
               <p className={`${PrimaryStyles.paragraph}`}>
                 ユーザー指定など条件を変更することで、様々なワードクラウドを生成できます。例えば、特定の期間やチャンネル、ロールに絞ったワードクラウドも作成可能です。
@@ -67,7 +67,7 @@ export default function HowToUse() {
                 ネットワーク図生成
               </h2>
               <p className={`${HeroStyles.paragraph} mb-8`}>
-                これは活動解析くん(仮)が生成するネットワーク図の例です。ユーザー同士の交流や関係性を視覚的に表現します。
+                これは活動分析くんが生成するネットワーク図の例です。ユーザー同士の交流や関係性を視覚的に表現します。
               </p>
               <p className={`${HeroStyles.paragraph}`}>
                 ネットワーク図も条件を変更して生成できます。例えば、特定の期間やチャンネル、ロールに絞ったネットワーク図も作成可能です。
@@ -110,7 +110,7 @@ export default function HowToUse() {
                 予約ワードクラウド生成
               </h2>
               <p className={`${PrimaryStyles.paragraph} mb-8`}>
-                これは活動解析くん(仮)が生成する予約ワードクラウドの例です。ユーザーが指定した期間に応じて、自動的にワードクラウドが生成されます。
+                これは活動分析くんが生成する予約ワードクラウドの例です。ユーザーが指定した期間に応じて、自動的にワードクラウドが生成されます。
               </p>
               <p>
                 毎日生成すれば、モデレーターがどの話題が注目されているかを把握できるだけでなく、サーバーメンバーの話のネタにもつながります！
@@ -127,7 +127,7 @@ export default function HowToUse() {
                 オプトアウトについて
               </h2>
               <p className={`${HeroStyles.paragraph} mb-8`}>
-                活動解析くん(仮)はユーザーの活動データを解析するツールですが、ユーザーはいつでもオプトアウトできます。オプトアウトすると、そのユーザーのデータは解析されなくなります。
+                活動分析くんはユーザーの活動データを解析するツールですが、ユーザーはいつでもオプトアウトできます。オプトアウトすると、そのユーザーのデータは解析されなくなります。
               </p>
               <p className={`${PrimaryStyles.paragraph}`}>
                 オプトアウトはユーザー単位のみならず、特定のチャンネルに対して行うこともできます。

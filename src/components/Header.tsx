@@ -24,7 +24,7 @@ export default function Header() {
       >
         <div className="flex justify-between items-center w-full sm:w-auto">
           <h1 className="text-lg sm:text-2xl font-bold">
-            <Link href="/">活動解析くん(仮)</Link>
+            <Link href="/">活動分析くん</Link>
           </h1>
           <button
             type="button"
