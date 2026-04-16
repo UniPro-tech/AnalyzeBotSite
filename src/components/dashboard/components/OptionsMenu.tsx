@@ -55,7 +55,7 @@ export default function OptionsMenu() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>設定</MenuItem>
+        {/*<MenuItem onClick={handleClose}>設定</MenuItem>*/}
         <Divider />
         <MenuItem
           onClick={async () => {
