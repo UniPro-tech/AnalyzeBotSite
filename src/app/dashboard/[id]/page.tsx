@@ -1,10 +1,10 @@
 import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
 import MainGrid from "@/components/dashboard/components/MainGrid";
 import type { StatCardProps } from "@/components/dashboard/components/StatCard";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
-import { notFound, redirect } from "next/navigation";
 
 export default async function Home({
   params,
