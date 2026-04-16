@@ -1,23 +1,24 @@
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import type { User } from "better-auth";
 import CardAlert from "./CardAlert";
-import MenuButton from "./MenuButton";
 import MenuContent from "./MenuContent";
 
 interface SideMenuMobileProps {
   open: boolean | undefined;
   toggleDrawer: (newOpen: boolean) => () => void;
+  user: User;
 }
 
 export default function SideMenuMobile({
   open,
   toggleDrawer,
+  user,
 }: SideMenuMobileProps) {
   return (
     <Drawer
@@ -45,17 +46,19 @@ export default function SideMenuMobile({
           >
             <Avatar
               sizes="small"
-              alt="Riley Carter"
-              src="/static/images/avatar/7.jpg"
+              alt={user.name}
+              src={user.image || undefined}
               sx={{ width: 24, height: 24 }}
             />
             <Typography component="p" variant="h6">
-              Riley Carter
+              {user.name}
             </Typography>
           </Stack>
+          {/*
           <MenuButton showBadge>
             <NotificationsRoundedIcon />
           </MenuButton>
+          */}
         </Stack>
         <Divider />
         <Stack sx={{ flexGrow: 1 }}>
@@ -69,7 +72,7 @@ export default function SideMenuMobile({
             fullWidth
             startIcon={<LogoutRoundedIcon />}
           >
-            Logout
+            ログアウト
           </Button>
         </Stack>
       </Stack>

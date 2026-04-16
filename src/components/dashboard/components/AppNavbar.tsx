@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import { tabsClasses } from "@mui/material/Tabs";
 import MuiToolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import type { User } from "better-auth";
 import * as React from "react";
 import ColorModeIconDropdown from "../../shared-theme/ColorModeIconDropdown";
 import MenuButton from "./MenuButton";
@@ -29,7 +30,7 @@ const Toolbar = styled(MuiToolbar)({
   },
 });
 
-export default function AppNavbar() {
+export default function AppNavbar(props: { user: User }) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -70,14 +71,18 @@ export default function AppNavbar() {
               component="h1"
               sx={{ color: "text.primary" }}
             >
-              Dashboard
+              ダッシュボード
             </Typography>
           </Stack>
           <ColorModeIconDropdown />
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
             <MenuRoundedIcon />
           </MenuButton>
-          <SideMenuMobile open={open} toggleDrawer={toggleDrawer} />
+          <SideMenuMobile
+            open={open}
+            toggleDrawer={toggleDrawer}
+            user={props.user}
+          />
         </Stack>
       </Toolbar>
     </AppBar>

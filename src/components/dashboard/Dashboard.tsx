@@ -45,7 +45,7 @@ export default function Dashboard(props: {
           guilds={props.guilds}
           currentId={props.currentId}
         />
-        <AppNavbar />
+        <AppNavbar user={props.user} />
         {/* Main content */}
         <Box
           component="main"
