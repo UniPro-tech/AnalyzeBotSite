@@ -42,7 +42,7 @@ export default function SelectContent(props: {
     (guild) => (BigInt(guild.permissions) & BigInt(8)) !== BigInt(8),
   );
   const [guild, setGuild] = React.useState(
-    ownGuilds[0].id || notOwnGuilds[0].id || "Add",
+    props.currentId || ownGuilds[0]?.id || notOwnGuilds[0]?.id || "invite",
   );
 
   const router = useRouter();
