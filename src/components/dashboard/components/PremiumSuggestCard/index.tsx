@@ -7,8 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { enablePremium } from "./actions";
 import { useRouter } from "next/navigation";
+import { enablePremium } from "./actions";
 
 export default function PremiumSuggestCard({ guildId }: { guildId: string }) {
   const theme = useTheme();
