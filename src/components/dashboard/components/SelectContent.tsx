@@ -35,8 +35,12 @@ export default function SelectContent(props: {
   currentId: string;
   guilds: Guild[];
 }) {
-  const ownGuilds = props.guilds.filter((guild) => BigInt(guild.permissions));
-  const notOwnGuilds = props.guilds.filter((guild) => !guild.owner);
+  const ownGuilds = props.guilds.filter(
+    (guild) => (BigInt(guild.permissions) && BigInt(8)) === BigInt(8),
+  );
+  const notOwnGuilds = props.guilds.filter(
+    (guild) => (BigInt(guild.permissions) && BigInt(8)) !== BigInt(8),
+  );
   const [guild, setGuild] = React.useState(
     ownGuilds[0].id || notOwnGuilds[0].id || "Add",
   );
