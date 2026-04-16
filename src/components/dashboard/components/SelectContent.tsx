@@ -30,7 +30,10 @@ const ListItemAvatar = styled(MuiListItemAvatar)({
 
 const DISCORD_ICON_URI = `https://cdn.discordapp.com/icons/`;
 
-export default function SelectContent(props: { guilds: Guild[] }) {
+export default function SelectContent(props: {
+  currentId: string;
+  guilds: Guild[];
+}) {
   const ownGuilds = props.guilds.filter((guild) => BigInt(guild.permissions));
   const notOwnGuilds = props.guilds.filter((guild) => !guild.owner);
   const [company, setCompany] = React.useState(
@@ -68,7 +71,7 @@ export default function SelectContent(props: { guilds: Guild[] }) {
         <ListSubheader sx={{ pt: 0 }}>Owner</ListSubheader>
       )}
       {ownGuilds.map((guild) => (
-        <MenuItem value={guild.id}>
+        <MenuItem value={guild.id} key={guild.id}>
           <ListItemAvatar>
             <Avatar
               alt={guild.name}
@@ -83,7 +86,7 @@ export default function SelectContent(props: { guilds: Guild[] }) {
       ))}
       {notOwnGuilds.length !== 0 && <ListSubheader>Member</ListSubheader>}
       {notOwnGuilds.map((guild) => (
-        <MenuItem value={guild.id}>
+        <MenuItem value={guild.id} key={guild.id}>
           <ListItemAvatar>
             <Avatar
               alt={guild.name}

@@ -12,23 +12,24 @@ export type StatCardProps = {
   title: string;
   value: string;
   interval: string;
+  percent: number;
   trend: "up" | "down" | "neutral";
   data: number[];
 };
 
-function getDaysInMonth(month: number, year: number) {
-  const date = new Date(year, month, 0);
-  const monthName = date.toLocaleDateString("en-US", {
-    month: "short",
-  });
-  const daysInMonth = date.getDate();
-  const days = [];
-  let i = 1;
-  while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
-    i += 1;
+// 変更: 直近30日間（今日を含む）の日付ラベルを生成する関数
+function getLast30DaysLabels() {
+  const labels = [];
+  const today = new Date();
+
+  // 29日前から今日(0日前)までループ
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const monthName = d.toLocaleDateString("en-US", { month: "short" });
+    labels.push(`${monthName} ${d.getDate()}`);
   }
-  return days;
+  return labels;
 }
 
 function AreaGradient({ color, id }: { color: string; id: string }) {
@@ -46,11 +47,14 @@ export default function StatCard({
   title,
   value,
   interval,
+  percent,
   trend,
   data,
 }: StatCardProps) {
   const theme = useTheme();
-  const daysInWeek = getDaysInMonth(4, 2024);
+
+  // 変更: 直近30日のラベルを取得
+  const daysLabels = getLast30DaysLabels();
 
   const trendColors = {
     up:
@@ -75,7 +79,6 @@ export default function StatCard({
 
   const color = labelColors[trend];
   const chartColor = trendColors[trend];
-  const trendValues = { up: "+25%", down: "-25%", neutral: "+5%" };
 
   return (
     <Card variant="outlined" sx={{ height: "100%", flexGrow: 1 }}>
@@ -95,7 +98,17 @@ export default function StatCard({
               <Typography variant="h4" component="p">
                 {value}
               </Typography>
-              <Chip size="small" color={color} label={trendValues[trend]} />
+              <Chip
+                size="small"
+                color={color}
+                label={
+                  trend === "up"
+                    ? `+${percent}%`
+                    : trend === "down"
+                      ? `-${percent}%`
+                      : `±0%`
+                }
+              />
             </Stack>
             <Typography variant="caption" sx={{ color: "text.secondary" }}>
               {interval}
@@ -110,7 +123,7 @@ export default function StatCard({
               showTooltip
               xAxis={{
                 scaleType: "band",
-                data: daysInWeek, // Use the correct property 'data' for xAxis
+                data: daysLabels, // 変更: daysInWeek から daysLabels に変更
               }}
               sx={{
                 [`& .${lineClasses.area}`]: {

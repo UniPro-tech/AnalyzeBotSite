@@ -7,12 +7,13 @@ import type {} from "@mui/x-charts/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type {} from "@mui/x-tree-view/themeAugmentation";
 import type { Session, User } from "better-auth";
+import type React from "react";
 import type { Guild } from "@/types/discord";
 import AppTheme from "../shared-theme/AppTheme";
 import AppNavbar from "./components/AppNavbar";
 import Header from "./components/Header";
-import MainGrid from "./components/MainGrid";
 import SideMenu from "./components/SideMenu";
+import Copyright from "./internals/components/Copyright";
 import {
   chartsCustomizations,
   dataGridCustomizations,
@@ -32,12 +33,18 @@ export default function Dashboard(props: {
   session: Session;
   user: User;
   guilds: Guild[];
+  currentId: string;
+  children: React.ReactNode;
 }) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex" }}>
-        <SideMenu user={props.user} guilds={props.guilds} />
+        <SideMenu
+          user={props.user}
+          guilds={props.guilds}
+          currentId={props.currentId}
+        />
         <AppNavbar />
         {/* Main content */}
         <Box
@@ -48,6 +55,7 @@ export default function Dashboard(props: {
               ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
               : alpha(theme.palette.background.default, 1),
             overflow: "auto",
+            minHeight: "100vh",
           })}
         >
           <Stack
@@ -57,10 +65,12 @@ export default function Dashboard(props: {
               mx: 3,
               pb: 5,
               mt: { xs: 8, md: 0 },
+              minHeight: "100vh",
             }}
           >
             <Header />
-            <MainGrid />
+            {props.children}
+            <Copyright sx={{ my: 4 }} />
           </Stack>
         </Box>
       </Box>

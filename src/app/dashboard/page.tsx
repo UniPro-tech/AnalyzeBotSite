@@ -1,13 +1,10 @@
 import { headers } from "next/headers";
-import { unauthorized } from "next/navigation";
-import Dashboard from "@/components/dashboard/Dashboard";
+import { redirect, unauthorized } from "next/navigation";
 import { auth } from "@/lib/auth";
-import type { Guild } from "@/types/discord";
 import { dataDB } from "@/lib/db";
+import { DISCORD_API_BASE, type Guild } from "@/types/discord";
 
-const DISCORD_API_BASE = "https://discord.com/api/v10";
-
-export default async function Home() {
+export default async function RedirectToFirstGuild() {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) unauthorized();
   const tokenSets = await auth.api.getAccessToken({
@@ -26,12 +23,6 @@ export default async function Home() {
   const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
     (guild) => guildIdSet.has(guild.id),
   );
-
-  return (
-    <Dashboard
-      session={session.session}
-      user={session.user}
-      guilds={filteredGuilds}
-    />
-  );
+  const firstGuildId = filteredGuilds[0].id;
+  redirect(`/dashboard/${firstGuildId}`);
 }
