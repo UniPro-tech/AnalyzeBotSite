@@ -7,7 +7,7 @@ export const BASE_URL = "https://analyze-bot.uniproject.jp";
 const STATIC_URLs: MetadataRoute.Sitemap = [
   {
     url: `${BASE_URL}/`,
-    lastModified: getLastModifiedDate("src/app/page.tsx").toISOString(),
+    lastModified: getLastModifiedDate("src/app/(main)/page.tsx").toISOString(),
     changeFrequency: "monthly",
     priority: 1,
   },
