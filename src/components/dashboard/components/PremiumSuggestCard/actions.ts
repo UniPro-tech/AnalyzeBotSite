@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { dataDB } from "@/lib/db";
+import { getDataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
 
 export const enablePremium = async (guildId: string) => {
@@ -46,6 +46,7 @@ export const enablePremium = async (guildId: string) => {
     throw new Error("Forbidden");
   }
 
+  const dataDB = getDataDB();
   const collection = dataDB.collection("guild_settings");
   // 1. データを取得（awaitを忘れずに）
   const settings = await collection.findOne({ guild_id: guildId });

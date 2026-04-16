@@ -1,10 +1,12 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { genericOAuth } from "better-auth/plugins";
-import { authDB } from "@/lib/db";
+import { getAuthDB } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
 
 export const auth = betterAuth({
-  database: mongodbAdapter(authDB),
+  database: mongodbAdapter(getAuthDB()),
   socialProviders: {
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID!,

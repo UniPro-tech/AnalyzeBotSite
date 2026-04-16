@@ -1,7 +1,27 @@
-import { MongoClient } from "mongodb";
+import { type Db, MongoClient } from "mongodb";
 
-export const authDbClient = new MongoClient(process.env.MONGODB_URI as string);
-export const authDB = authDbClient.db("dashboard");
+// キャッシュ用の変数
+let cachedClient: MongoClient | null = null;
+let cachedAuthDb: Db | null = null;
+let cachedDataDb: Db | null = null;
 
-export const dataDbClient = new MongoClient(process.env.MONGODB_URI as string);
-export const dataDB = dataDbClient.db("discord_analyzer");
+export function getMongoClient() {
+  if (cachedClient) return cachedClient;
+
+  const uri = process.env.MONGODB_URI!;
+
+  cachedClient = new MongoClient(uri);
+  return cachedClient;
+}
+
+export function getAuthDB() {
+  if (cachedAuthDb) return cachedAuthDb;
+  cachedAuthDb = getMongoClient().db("dashboard");
+  return cachedAuthDb;
+}
+
+export function getDataDB() {
+  if (cachedDataDb) return cachedDataDb;
+  cachedDataDb = getMongoClient().db("discord_analyzer");
+  return cachedDataDb;
+}

@@ -4,8 +4,10 @@ import { headers } from "next/headers";
 import { notFound, redirect, unauthorized } from "next/navigation";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { auth } from "@/lib/auth";
-import { dataDB } from "@/lib/db";
+import { getDataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
@@ -55,6 +57,7 @@ export default async function RootLayout({
         throw new Error(`Discord API Error`);
     }
   }
+  const dataDB = getDataDB();
   const collection = dataDB.collection("messages");
   const guildIdsInDb = await collection.distinct("guild_id");
   const guildIdSet = new Set(guildIdsInDb);

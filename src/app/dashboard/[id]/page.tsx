@@ -3,8 +3,10 @@ import { notFound, redirect } from "next/navigation";
 import MainGrid from "@/components/dashboard/components/MainGrid";
 import type { StatCardProps } from "@/components/dashboard/components/StatCard";
 import { auth } from "@/lib/auth";
-import { dataDB } from "@/lib/db";
+import { getDataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home({
   params,
@@ -12,6 +14,7 @@ export default async function Home({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const dataDB = getDataDB();
   const collection = dataDB.collection("messages");
 
   // 1. 日付範囲と0埋め用のラベル作成
