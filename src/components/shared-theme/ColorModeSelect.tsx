@@ -1,3 +1,4 @@
+"use client";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectProps } from "@mui/material/Select";
 import { useColorScheme } from "@mui/material/styles";
