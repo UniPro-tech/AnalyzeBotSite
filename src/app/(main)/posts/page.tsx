@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import Link from "next/link";
-import { HomeStyles } from "../../constants/styles";
+import { HomeStyles } from "@/constants/styles";
 
 type Post = {
   id: string;
