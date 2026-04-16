@@ -7,8 +7,8 @@ export const auth = betterAuth({
   database: mongodbAdapter(authDB),
   socialProviders: {
     discord: {
-      clientId: process.env.DISCORD_CLIENT_ID as string,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
       scope: ["guilds", "openid"],
       disableIdTokenSignIn: false,
     },
@@ -18,8 +18,8 @@ export const auth = betterAuth({
       config: [
         {
           providerId: "unique",
-          clientId: process.env.UNIQUE_CLIENT_ID as string,
-          clientSecret: process.env.UNIQUE_CLIENT_SECRET as string,
+          clientId: process.env.UNIQUE_CLIENT_ID!,
+          clientSecret: process.env.UNIQUE_CLIENT_SECRET!,
           scopes: ["openid", "profile", "email"],
           discoveryUrl:
             "https://auth.uniproject.jp/.well-known/openid-configuration",
