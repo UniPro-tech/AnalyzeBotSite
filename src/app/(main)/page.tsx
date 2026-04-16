@@ -60,7 +60,7 @@ const jsonLdWebsite: WithContext<WebSite> = {
     audienceType: "Discordサーバー管理者",
   },
   datePublished: "2025-03-11",
-  dateModified: getLastModifiedDate("src/app/page.tsx").toISOString(),
+  dateModified: getLastModifiedDate("src/app/(main)/page.tsx").toISOString(),
 };
 
 export default async function Home() {
