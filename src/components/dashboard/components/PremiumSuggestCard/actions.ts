@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
