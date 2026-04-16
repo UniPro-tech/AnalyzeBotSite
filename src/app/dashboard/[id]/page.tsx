@@ -127,7 +127,6 @@ export default async function Home({
     { guild_id: id },
     { projection: { is_premium: 1 } }, // is_premium だけを取得する
   );
-  console.log(settings);
 
   return (
     <MainGrid
