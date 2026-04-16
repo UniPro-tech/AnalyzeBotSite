@@ -49,6 +49,7 @@ export const HeroStyles = {
   wrapper: `w-full py-20 bg-(--hero-background) text-(--hero-headline) p-4`,
   layouts: {
     imageSide: `max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8`,
+    fullWidth: `max-w-6xl w-full flex flex-col justify-center items-center mx-auto`,
   },
   content: `max-w-6xl mx-auto flex flex-col items-center text-center space-y-8`,
   headline: `text-4xl font-bold`,
@@ -78,6 +79,7 @@ export const PrimaryStyles = {
   wrapper: `w-full py-20 bg-(--primary-background) text-(--primary-headline) p-4`,
   layouts: {
     imageSide: `max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8`,
+    center: `max-w-6xl mx-auto flex flex-col items-center gap-2 py-20`,
   },
   headline: `text-4xl font-bold`,
   subHeadline: `text-2xl text-(--primary-sub-headline)`,
