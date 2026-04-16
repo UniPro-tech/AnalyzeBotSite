@@ -10,27 +10,27 @@ import { SitemarkIcon } from "./CustomIcons";
 const items = [
   {
     icon: <SettingsSuggestRoundedIcon sx={{ color: "text.secondary" }} />,
-    title: "Adaptable performance",
+    title: "機械学習による自動データ分析",
     description:
-      "Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.",
+      "Discordのメッセージの内容を自動で解析。複雑な分析作業を大幅に効率化し、すぐに結果を取得できます。",
   },
   {
     icon: <ConstructionRoundedIcon sx={{ color: "text.secondary" }} />,
-    title: "Built to last",
+    title: "柔軟な分析設定",
     description:
-      "Experience unmatched durability that goes above and beyond with lasting investment.",
+      "用途に応じて分析方法や範囲等をカスタマイズ可能。さまざまなシーンに対応します。",
   },
   {
     icon: <ThumbUpAltRoundedIcon sx={{ color: "text.secondary" }} />,
-    title: "Great user experience",
+    title: "直感的で使いやすいUI",
     description:
-      "Integrate our product into your routine with an intuitive and easy-to-use interface.",
+      "専門知識がなくても使えるシンプルな設計。誰でもすぐに分析を始められます。",
   },
   {
     icon: <AutoFixHighRoundedIcon sx={{ color: "text.secondary" }} />,
-    title: "Innovative functionality",
+    title: "インサイトの可視化",
     description:
-      "Stay ahead with features that set new standards, addressing your evolving needs better than the rest.",
+      "分析結果をわかりやすく可視化。Discordのサーバーの情報を簡単に見える化します。",
   },
 ];
 
