@@ -30,6 +30,9 @@ export default async function RootLayout({
     body: { providerId: "discord" },
     headers: await headers(),
   });
+  if (!tokenSets?.accessToken) {
+    unauthorized();
+  }
   const discordGuildsRes = await fetch(`${DISCORD_API_BASE}/users/@me/guilds`, {
     headers: {
       Authorization: `Bearer ${tokenSets.accessToken}`,

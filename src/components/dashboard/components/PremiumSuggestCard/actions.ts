@@ -33,9 +33,11 @@ export const enablePremium = async (guildId: string) => {
         throw new Error(`Discord API Error`);
     }
   }
-  const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
-    (guild) => guild.owner,
-  );
+  const guilds = await discordGuildsRes.json();
+  if (!Array.isArray(guilds)) {
+    throw new Error("Unexpected Discord response");
+  }
+  const filteredGuilds = (guilds as Guild[]).filter((guild) => guild.owner);
   const isOwner = filteredGuilds.some((guild) => {
     return guild.id === guildId;
   });
