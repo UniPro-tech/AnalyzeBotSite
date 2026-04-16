@@ -4,9 +4,9 @@ import Button from "@mui/material/Button";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { revalidateTag } from "next/cache";
 import { authClient } from "@/lib/auth-client";
 import { DiscordIcon, SitemarkIcon } from "./CustomIcons";
-import { revalidateTag } from "next/cache";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
