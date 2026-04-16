@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "../../globals.css";
 import { headers } from "next/headers";
-import { notFound, redirect, unauthorized } from "next/navigation";
+import { unauthorized } from "next/navigation";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { auth } from "@/lib/auth";
 import { getDataDB } from "@/lib/db";
-import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+import { getOAuth2Guilds } from "@/lib/discord";
 
 export const dynamic = "force-dynamic";
 
@@ -28,43 +28,18 @@ export default async function RootLayout({
   const { id: currentId } = await params;
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) unauthorized();
-  const tokenSets = await auth.api.getAccessToken({
-    body: { providerId: "discord" },
+  const tokenSet = await auth.api.getAccessToken({
     headers: await headers(),
+    body: { providerId: "discord" },
   });
-  if (!tokenSets?.accessToken) {
-    unauthorized();
-  }
-  const discordGuildsRes = await fetch(`${DISCORD_API_BASE}/users/@me/guilds`, {
-    headers: {
-      Authorization: `Bearer ${tokenSets.accessToken}`,
-    },
-  });
-  if (!discordGuildsRes.ok) {
-    switch (discordGuildsRes.status) {
-      case 404:
-        notFound();
-        break;
-      case 401:
-      case 403:
-        await auth.api.signOut({ headers: await headers() });
-        redirect("/login");
-        break;
-      default:
-        console.log(
-          `Discord API Error: ${discordGuildsRes.status} - ${await discordGuildsRes.text()}`,
-        );
-        throw new Error(`Discord API Error`);
-    }
-  }
+
+  const guilds = await getOAuth2Guilds(tokenSet.accessToken);
   const dataDB = getDataDB();
   const collection = dataDB.collection("messages");
   const guildIdsInDb = await collection.distinct("guild_id");
   const guildIdSet = new Set(guildIdsInDb);
 
-  const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
-    (guild) => guildIdSet.has(guild.id),
-  );
+  const filteredGuilds = guilds.filter((guild) => guildIdSet.has(guild.id));
 
   const accounts = await auth.api.listUserAccounts({
     headers: await headers(),

@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type { User } from "better-auth";
-import type { Guild } from "@/types/discord";
+import type { Guild } from "@/lib/discord";
 import CardAlert from "./CardAlert";
 import MenuContent from "./MenuContent";
 import OptionsMenu from "./OptionsMenu";

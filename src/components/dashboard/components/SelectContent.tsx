@@ -14,7 +14,7 @@ import Select, {
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import * as React from "react";
-import type { Guild } from "@/types/discord";
+import type { Guild } from "@/lib/discord";
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({
   width: 28,

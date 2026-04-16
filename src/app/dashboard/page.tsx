@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { notFound, redirect, unauthorized } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getDataDB } from "@/lib/db";
-import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+import { DISCORD_API_BASE, type Guild } from "@/lib/discord";
 
 export const dynamic = "force-dynamic";
 

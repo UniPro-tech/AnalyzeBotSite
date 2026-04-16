@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { authClient } from "@/lib/auth-client";
 import { DiscordIcon, SitemarkIcon } from "./CustomIcons";
+import { revalidateTag } from "next/cache";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -46,6 +47,7 @@ export default function SignInCard() {
           fullWidth
           variant="outlined"
           onClick={async () => {
+            revalidateTag("discord-guilds", "max");
             await authClient.signIn.social({
               provider: "discord",
               callbackURL: "/dashboard",

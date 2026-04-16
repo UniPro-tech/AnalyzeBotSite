@@ -8,7 +8,7 @@ import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type {} from "@mui/x-tree-view/themeAugmentation";
 import type { Session, User } from "better-auth";
 import type React from "react";
-import type { Guild } from "@/types/discord";
+import type { Guild } from "@/lib/discord";
 import AppTheme from "../shared-theme/AppTheme";
 import AppNavbar from "./components/AppNavbar";
 import Header from "./components/Header";

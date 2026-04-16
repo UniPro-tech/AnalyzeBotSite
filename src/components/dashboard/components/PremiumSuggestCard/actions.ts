@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getDataDB } from "@/lib/db";
-import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+import { DISCORD_API_BASE, type Guild } from "@/lib/discord";
 
 export const enablePremium = async (guildId: string) => {
   const tokenSets = await auth.api.getAccessToken({
