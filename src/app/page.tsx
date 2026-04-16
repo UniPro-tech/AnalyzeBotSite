@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import Script from "next/script";
 import type { Product, WebSite, WithContext } from "schema-dts";
-import { getLastModifiedDate } from "@/libs/git";
+import { getLastModifiedDate } from "@/lib/git";
 import HeroSlideshow from "../components/HeroSlideshow";
 import { HomeStyles } from "../constants/styles";
 import { BASE_URL } from "./sitemap";

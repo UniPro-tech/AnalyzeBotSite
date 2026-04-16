@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import type { MetadataRoute } from "next";
-import { getLastModifiedDate } from "@/libs/git";
+import { getLastModifiedDate } from "@/lib/git";
 
 export const BASE_URL = "https://analyze-bot.uniproject.jp";
 
