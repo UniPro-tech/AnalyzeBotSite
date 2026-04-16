@@ -6,6 +6,7 @@ import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import type { User } from "better-auth";
 import CardAlert from "./CardAlert";
 import MenuContent from "./MenuContent";
 import OptionsMenu from "./OptionsMenu";
@@ -24,7 +25,7 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
-export default function SideMenu() {
+export default function SideMenu(props: { user: User }) {
   return (
     <Drawer
       variant="permanent"
@@ -68,8 +69,8 @@ export default function SideMenu() {
       >
         <Avatar
           sizes="small"
-          alt="Riley Carter"
-          src="/static/images/avatar/7.jpg"
+          alt={props.user.name}
+          src={props.user.image || undefined}
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ mr: "auto" }}>
@@ -77,10 +78,10 @@ export default function SideMenu() {
             variant="body2"
             sx={{ fontWeight: 500, lineHeight: "16px" }}
           >
-            Riley Carter
+            {props.user.name}
           </Typography>
           <Typography variant="caption" sx={{ color: "text.secondary" }}>
-            riley@email.com
+            {props.user.name}
           </Typography>
         </Box>
         <OptionsMenu />

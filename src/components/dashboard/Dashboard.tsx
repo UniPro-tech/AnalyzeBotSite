@@ -6,6 +6,7 @@ import { alpha } from "@mui/material/styles";
 import type {} from "@mui/x-charts/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type {} from "@mui/x-tree-view/themeAugmentation";
+import type { Session, User } from "better-auth";
 import AppTheme from "../shared-theme/AppTheme";
 import AppNavbar from "./components/AppNavbar";
 import Header from "./components/Header";
@@ -25,12 +26,16 @@ const xThemeComponents = {
   ...treeViewCustomizations,
 };
 
-export default function Dashboard(props: { disableCustomTheme?: boolean }) {
+export default function Dashboard(props: {
+  disableCustomTheme?: boolean;
+  session: Session;
+  user: User;
+}) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex" }}>
-        <SideMenu />
+        <SideMenu user={props.user} />
         <AppNavbar />
         {/* Main content */}
         <Box

@@ -10,6 +10,7 @@ import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
+import { authClient } from "@/lib/auth-client";
 import MenuButton from "./MenuButton";
 
 const MenuItem = styled(MuiMenuItem)({
@@ -54,14 +55,13 @@ export default function OptionsMenu() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>Add another account</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <MenuItem onClick={handleClose}>設定</MenuItem>
         <Divider />
         <MenuItem
-          onClick={handleClose}
+          onClick={async () => {
+            await authClient.signOut();
+            handleClose();
+          }}
           sx={{
             [`& .${listItemIconClasses.root}`]: {
               ml: "auto",
@@ -69,7 +69,7 @@ export default function OptionsMenu() {
             },
           }}
         >
-          <ListItemText>Logout</ListItemText>
+          <ListItemText>ログアウト</ListItemText>
           <ListItemIcon>
             <LogoutRoundedIcon fontSize="small" />
           </ListItemIcon>
