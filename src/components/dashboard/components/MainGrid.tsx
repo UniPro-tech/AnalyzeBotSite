@@ -1,4 +1,5 @@
 "use client";
+import { Chip } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -16,7 +17,7 @@ export default function MainGrid({ data }: { data: StatCardProps[] }) {
     >
       {/* cards */}
       <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-        Overview
+        Overview <Chip color={"primary"} label={"Beta"} variant="outlined" />
       </Typography>
       <Grid
         container

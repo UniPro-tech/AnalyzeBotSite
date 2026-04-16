@@ -1,11 +1,6 @@
-import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import Stack from "@mui/material/Stack";
 import ColorModeIconDropdown from "../../shared-theme/ColorModeIconDropdown";
-import CustomDatePicker from "./CustomDatePicker";
-import MenuButton from "./MenuButton";
 import NavbarBreadcrumbs from "./NavbarBreadcrumbs";
-
-import Search from "./Search";
 
 export default function Header() {
   return (
@@ -23,11 +18,15 @@ export default function Header() {
     >
       <NavbarBreadcrumbs />
       <Stack direction="row" sx={{ gap: 1 }}>
+        {/*
         <Search />
         <CustomDatePicker />
+        */}
+        {/*
         <MenuButton showBadge aria-label="Open notifications">
           <NotificationsRoundedIcon />
         </MenuButton>
+        */}
         <ColorModeIconDropdown />
       </Stack>
     </Stack>

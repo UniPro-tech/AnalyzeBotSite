@@ -12,6 +12,7 @@ import Select, {
   selectClasses,
 } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import type { Guild } from "@/types/discord";
 
@@ -36,19 +37,26 @@ export default function SelectContent(props: {
 }) {
   const ownGuilds = props.guilds.filter((guild) => BigInt(guild.permissions));
   const notOwnGuilds = props.guilds.filter((guild) => !guild.owner);
-  const [company, setCompany] = React.useState(
+  const [guild, setGuild] = React.useState(
     ownGuilds[0].id || notOwnGuilds[0].id || "Add",
   );
 
+  const router = useRouter();
+
   const handleChange = (event: SelectChangeEvent) => {
-    setCompany(event.target.value as string);
+    setGuild(event.target.value as string);
+    if (event.target.value === "invite") {
+      router.push("/invite");
+    } else {
+      router.push(`/dashboard/${event.target.value}`);
+    }
   };
 
   return (
     <Select
       labelId="company-select"
       id="company-simple-select"
-      value={company}
+      value={guild}
       onChange={handleChange}
       displayEmpty
       inputProps={{ "aria-label": "Select company" }}
@@ -97,7 +105,7 @@ export default function SelectContent(props: {
         </MenuItem>
       ))}
       <Divider sx={{ mx: -1 }} />
-      <MenuItem value={"Add"}>
+      <MenuItem value={"invite"}>
         <ListItemIcon>
           <AddRoundedIcon />
         </ListItemIcon>
