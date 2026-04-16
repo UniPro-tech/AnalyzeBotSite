@@ -1,4 +1,11 @@
 import { MongoClient } from "mongodb";
 
-export const client = new MongoClient(process.env.MONGODB_URI as string);
-export const db = client.db();
+export const authDbClient = new MongoClient(
+  process.env.AUTH_MONGODB_URI as string,
+);
+export const authDB = authDbClient.db();
+
+export const dataDbClient = new MongoClient(
+  process.env.DATA_MONGODB_URI as string,
+);
+export const dataDB = authDbClient.db();
