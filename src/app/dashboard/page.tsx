@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { redirect, unauthorized } from "next/navigation";
+import { notFound, redirect, unauthorized } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
@@ -16,6 +16,23 @@ export default async function RedirectToFirstGuild() {
       Authorization: `Bearer ${tokenSets.accessToken}`,
     },
   });
+  if (!discordGuildsRes.ok) {
+    switch (discordGuildsRes.status) {
+      case 404:
+        notFound();
+        break;
+      case 401:
+      case 403:
+        await auth.api.signOut({ headers: await headers() });
+        redirect("/login");
+        break;
+      default:
+        console.log(
+          `Discord API Error: ${discordGuildsRes.status} - ${await discordGuildsRes.text()}`,
+        );
+        throw new Error(`Discord API Error`);
+    }
+  }
   const collection = dataDB.collection("messages");
   const guildIdsInDb = await collection.distinct("guild_id");
   const guildIdSet = new Set(guildIdsInDb);

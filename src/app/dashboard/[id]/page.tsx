@@ -4,6 +4,7 @@ import type { StatCardProps } from "@/components/dashboard/components/StatCard";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
 import { DISCORD_API_BASE, type Guild } from "@/types/discord";
+import { notFound, redirect } from "next/navigation";
 
 export default async function Home({
   params,
@@ -138,6 +139,23 @@ export default async function Home({
       Authorization: `Bearer ${tokenSets.accessToken}`,
     },
   });
+  if (!discordGuildsRes.ok) {
+    switch (discordGuildsRes.status) {
+      case 404:
+        notFound();
+        break;
+      case 401:
+      case 403:
+        await auth.api.signOut({ headers: await headers() });
+        redirect("/login");
+        break;
+      default:
+        console.log(
+          `Discord API Error: ${discordGuildsRes.status} - ${await discordGuildsRes.text()}`,
+        );
+        throw new Error(`Discord API Error`);
+    }
+  }
   const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
     (guild) => guild.owner,
   );
