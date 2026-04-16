@@ -1,3 +1,4 @@
+"use client";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -6,6 +7,8 @@ import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { User } from "better-auth";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 import CardAlert from "./CardAlert";
 import MenuContent from "./MenuContent";
 
@@ -20,6 +23,7 @@ export default function SideMenuMobile({
   toggleDrawer,
   user,
 }: SideMenuMobileProps) {
+  const router = useRouter();
   return (
     <Drawer
       anchor="right"
@@ -71,6 +75,10 @@ export default function SideMenuMobile({
             variant="outlined"
             fullWidth
             startIcon={<LogoutRoundedIcon />}
+            onClick={async () => {
+              await authClient.signOut();
+              router.push("/login");
+            }}
           >
             ログアウト
           </Button>

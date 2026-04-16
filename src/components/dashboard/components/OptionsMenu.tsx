@@ -1,7 +1,7 @@
 "use client";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
-import Divider, { dividerClasses } from "@mui/material/Divider";
+import { dividerClasses } from "@mui/material/Divider";
 import { listClasses } from "@mui/material/List";
 import ListItemIcon, { listItemIconClasses } from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -9,6 +9,7 @@ import Menu from "@mui/material/Menu";
 import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import { authClient } from "@/lib/auth-client";
 import MenuButton from "./MenuButton";
@@ -26,6 +27,7 @@ export default function OptionsMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const router = useRouter();
   return (
     <React.Fragment>
       <MenuButton
@@ -55,12 +57,15 @@ export default function OptionsMenu() {
           },
         }}
       >
-        {/*<MenuItem onClick={handleClose}>設定</MenuItem>*/}
+        {/*
+        <MenuItem onClick={handleClose}>設定</MenuItem>
         <Divider />
+        */}
         <MenuItem
           onClick={async () => {
             await authClient.signOut();
             handleClose();
+            router.push("/login");
           }}
           sx={{
             [`& .${listItemIconClasses.root}`]: {
