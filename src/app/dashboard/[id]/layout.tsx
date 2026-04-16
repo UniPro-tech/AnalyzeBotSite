@@ -50,6 +50,10 @@ export default async function RootLayout({
     (account) => account.providerId === "unique",
   );
 
+  if (!filteredGuilds.some((guild) => guild.id === currentId)) {
+    unauthorized();
+  }
+
   return (
     <Dashboard
       session={session.session}

@@ -1,8 +1,31 @@
 "use server";
 
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
+import { DISCORD_API_BASE, type Guild } from "@/types/discord";
 
 export const enablePremium = async (guildId: string) => {
+  const tokenSets = await auth.api.getAccessToken({
+    body: { providerId: "discord" },
+    headers: await headers(),
+  });
+  const discordGuildsRes = await fetch(`${DISCORD_API_BASE}/users/@me/guilds`, {
+    headers: {
+      Authorization: `Bearer ${tokenSets.accessToken}`,
+    },
+  });
+  const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
+    (guild) => guild.owner,
+  );
+  const isOwner = filteredGuilds.some((guild) => {
+    return guild.id === guildId;
+  });
+
+  if (!isOwner) {
+    throw new Error("Forbidden");
+  }
+
   const collection = dataDB.collection("guild_settings");
   // 1. データを取得（awaitを忘れずに）
   const settings = await collection.findOne({ guild_id: guildId });

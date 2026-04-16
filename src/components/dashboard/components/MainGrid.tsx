@@ -11,9 +11,11 @@ export default function MainGrid({
   isPremiumUser,
   guildId,
   isPremiumGuild,
+  isOwner,
 }: {
   data: StatCardProps[];
   guildId: string;
+  isOwner?: boolean;
   isPremiumUser?: boolean;
   isPremiumGuild?: boolean;
 }) {
@@ -41,7 +43,7 @@ export default function MainGrid({
             <StatCard {...card} />
           </Grid>
         ))}
-        {isPremiumUser && !isPremiumGuild && (
+        {isPremiumUser && !isPremiumGuild && isOwner && (
           <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <PremiumSuggestCard guildId={guildId} />
           </Grid>

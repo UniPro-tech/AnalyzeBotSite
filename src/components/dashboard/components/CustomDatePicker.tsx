@@ -1,3 +1,4 @@
+"use client";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import Button from "@mui/material/Button";
 import { useForkRef } from "@mui/material/utils";

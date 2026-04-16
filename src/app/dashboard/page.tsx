@@ -23,6 +23,10 @@ export default async function RedirectToFirstGuild() {
   const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
     (guild) => guildIdSet.has(guild.id),
   );
+  if (filteredGuilds.length === 0) {
+    // ギルドが見つからない場合の処理
+    redirect("/invite");
+  }
   const firstGuildId = filteredGuilds[0].id;
   redirect(`/dashboard/${firstGuildId}`);
 }

@@ -3,6 +3,7 @@ import MainGrid from "@/components/dashboard/components/MainGrid";
 import type { StatCardProps } from "@/components/dashboard/components/StatCard";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
+import { DISCORD_API_BASE, type Guild } from "@/types/discord";
 
 export default async function Home({
   params,
@@ -128,12 +129,29 @@ export default async function Home({
     { projection: { is_premium: 1 } }, // is_premium だけを取得する
   );
 
+  const tokenSets = await auth.api.getAccessToken({
+    body: { providerId: "discord" },
+    headers: await headers(),
+  });
+  const discordGuildsRes = await fetch(`${DISCORD_API_BASE}/users/@me/guilds`, {
+    headers: {
+      Authorization: `Bearer ${tokenSets.accessToken}`,
+    },
+  });
+  const filteredGuilds = ((await discordGuildsRes.json()) as Guild[]).filter(
+    (guild) => guild.owner,
+  );
+  const isOwner = filteredGuilds.some((guild) => {
+    return guild.id === id;
+  });
+
   return (
     <MainGrid
       data={data}
       isPremiumUser={isPremiumUser}
       guildId={id}
       isPremiumGuild={settings?.is_premium ?? false}
+      isOwner={isOwner}
     />
   );
 }
