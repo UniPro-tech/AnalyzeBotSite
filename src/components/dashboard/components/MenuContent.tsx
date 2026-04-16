@@ -45,7 +45,11 @@ export default function MenuContent() {
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
               onClick={() => {
-                router.push(item.href);
+                if (item.href.startsWith("http")) {
+                  window.location.assign(item.href);
+                } else {
+                  router.push(item.href);
+                }
               }}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
