@@ -36,10 +36,10 @@ export default function SelectContent(props: {
   guilds: Guild[];
 }) {
   const ownGuilds = props.guilds.filter(
-    (guild) => (BigInt(guild.permissions) && BigInt(8)) === BigInt(8),
+    (guild) => (BigInt(guild.permissions) & BigInt(8)) === BigInt(8),
   );
   const notOwnGuilds = props.guilds.filter(
-    (guild) => (BigInt(guild.permissions) && BigInt(8)) !== BigInt(8),
+    (guild) => (BigInt(guild.permissions) & BigInt(8)) !== BigInt(8),
   );
   const [guild, setGuild] = React.useState(
     ownGuilds[0].id || notOwnGuilds[0].id || "Add",
@@ -80,7 +80,7 @@ export default function SelectContent(props: {
       }}
     >
       {ownGuilds.length !== 0 && (
-        <ListSubheader sx={{ pt: 0 }}>Owner</ListSubheader>
+        <ListSubheader sx={{ pt: 0 }}>Admin</ListSubheader>
       )}
       {ownGuilds.map((guild) => (
         <MenuItem value={guild.id} key={guild.id}>
