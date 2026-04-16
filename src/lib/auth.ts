@@ -9,7 +9,7 @@ export const auth = betterAuth({
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-      scopes: ["identity", "guilds", "openid"],
+      scope: ["guilds", "openid"],
       disableIdTokenSignIn: false,
     },
   },

@@ -7,6 +7,7 @@ import type {} from "@mui/x-charts/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type {} from "@mui/x-tree-view/themeAugmentation";
 import type { Session, User } from "better-auth";
+import type { Guild } from "@/types/discord";
 import AppTheme from "../shared-theme/AppTheme";
 import AppNavbar from "./components/AppNavbar";
 import Header from "./components/Header";
@@ -30,12 +31,13 @@ export default function Dashboard(props: {
   disableCustomTheme?: boolean;
   session: Session;
   user: User;
+  guilds: Guild[];
 }) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex" }}>
-        <SideMenu user={props.user} />
+        <SideMenu user={props.user} guilds={props.guilds} />
         <AppNavbar />
         {/* Main content */}
         <Box

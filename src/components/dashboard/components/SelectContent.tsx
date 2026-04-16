@@ -1,8 +1,5 @@
 "use client";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import ConstructionRoundedIcon from "@mui/icons-material/ConstructionRounded";
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import SmartphoneRoundedIcon from "@mui/icons-material/SmartphoneRounded";
 import MuiAvatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import MuiListItemAvatar from "@mui/material/ListItemAvatar";
@@ -16,6 +13,7 @@ import Select, {
 } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
+import type { Guild } from "@/types/discord";
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({
   width: 28,
@@ -30,8 +28,14 @@ const ListItemAvatar = styled(MuiListItemAvatar)({
   marginRight: 12,
 });
 
-export default function SelectContent() {
-  const [company, setCompany] = React.useState("");
+const DISCORD_ICON_URI = `https://cdn.discordapp.com/icons/`;
+
+export default function SelectContent(props: { guilds: Guild[] }) {
+  const ownGuilds = props.guilds.filter((guild) => BigInt(guild.permissions));
+  const notOwnGuilds = props.guilds.filter((guild) => !guild.owner);
+  const [company, setCompany] = React.useState(
+    ownGuilds[0].id || notOwnGuilds[0].id || "Add",
+  );
 
   const handleChange = (event: SelectChangeEvent) => {
     setCompany(event.target.value as string);
@@ -60,46 +64,41 @@ export default function SelectContent() {
         },
       }}
     >
-      <ListSubheader sx={{ pt: 0 }}>Production</ListSubheader>
-      <MenuItem value="">
-        <ListItemAvatar>
-          <Avatar alt="Sitemark web">
-            <DevicesRoundedIcon sx={{ fontSize: "1rem" }} />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Sitemark-web" secondary="Web app" />
-      </MenuItem>
-      <MenuItem value={10}>
-        <ListItemAvatar>
-          <Avatar alt="Sitemark App">
-            <SmartphoneRoundedIcon sx={{ fontSize: "1rem" }} />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Sitemark-app" secondary="Mobile application" />
-      </MenuItem>
-      <MenuItem value={20}>
-        <ListItemAvatar>
-          <Avatar alt="Sitemark Store">
-            <DevicesRoundedIcon sx={{ fontSize: "1rem" }} />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Sitemark-Store" secondary="Web app" />
-      </MenuItem>
-      <ListSubheader>Development</ListSubheader>
-      <MenuItem value={30}>
-        <ListItemAvatar>
-          <Avatar alt="Sitemark Store">
-            <ConstructionRoundedIcon sx={{ fontSize: "1rem" }} />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Sitemark-Admin" secondary="Web app" />
-      </MenuItem>
+      {ownGuilds.length !== 0 && (
+        <ListSubheader sx={{ pt: 0 }}>Owner</ListSubheader>
+      )}
+      {ownGuilds.map((guild) => (
+        <MenuItem value={guild.id}>
+          <ListItemAvatar>
+            <Avatar
+              alt={guild.name}
+              src={
+                guild.icon &&
+                `${DISCORD_ICON_URI}/${guild.id}/${guild.icon}.png`
+              }
+            />
+          </ListItemAvatar>
+          <ListItemText primary={guild.name} secondary={guild.name} />
+        </MenuItem>
+      ))}
+      {notOwnGuilds.length !== 0 && <ListSubheader>Member</ListSubheader>}
+      {notOwnGuilds.map((guild) => (
+        <MenuItem value={guild.id}>
+          <ListItemAvatar>
+            <Avatar
+              alt={guild.name}
+              src={`${DISCORD_ICON_URI}/${guild.id}/${guild.icon}.png`}
+            />
+          </ListItemAvatar>
+          <ListItemText primary={guild.name} secondary={guild.name} />
+        </MenuItem>
+      ))}
       <Divider sx={{ mx: -1 }} />
-      <MenuItem value={40}>
+      <MenuItem value={"Add"}>
         <ListItemIcon>
           <AddRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary="Add product" secondary="Web app" />
+        <ListItemText primary="サーバーを追加" secondary="Botを導入する" />
       </MenuItem>
     </Select>
   );

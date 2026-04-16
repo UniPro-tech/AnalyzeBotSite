@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type { User } from "better-auth";
+import type { Guild } from "@/types/discord";
 import CardAlert from "./CardAlert";
 import MenuContent from "./MenuContent";
 import OptionsMenu from "./OptionsMenu";
@@ -25,7 +26,7 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
-export default function SideMenu(props: { user: User }) {
+export default function SideMenu(props: { user: User; guilds: Guild[] }) {
   return (
     <Drawer
       variant="permanent"
@@ -43,7 +44,7 @@ export default function SideMenu(props: { user: User }) {
           p: 1.5,
         }}
       >
-        <SelectContent />
+        <SelectContent guilds={props.guilds} />
       </Box>
       <Divider />
       <Box
@@ -55,7 +56,7 @@ export default function SideMenu(props: { user: User }) {
         }}
       >
         <MenuContent />
-        <CardAlert />
+        {/*<CardAlert />*/}
       </Box>
       <Stack
         direction="row"
