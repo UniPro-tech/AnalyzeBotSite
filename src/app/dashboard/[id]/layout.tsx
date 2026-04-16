@@ -43,12 +43,20 @@ export default async function RootLayout({
     (guild) => guildIdSet.has(guild.id),
   );
 
+  const accounts = await auth.api.listUserAccounts({
+    headers: await headers(),
+  });
+  const isPremiumUser = accounts.some(
+    (account) => account.providerId === "unique",
+  );
+
   return (
     <Dashboard
       session={session.session}
       user={session.user}
       guilds={filteredGuilds}
       currentId={currentId}
+      isPremiumUser={isPremiumUser}
     >
       {children}
     </Dashboard>

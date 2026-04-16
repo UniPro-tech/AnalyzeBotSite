@@ -35,6 +35,7 @@ export default function Dashboard(props: {
   guilds: Guild[];
   currentId: string;
   children: React.ReactNode;
+  isPremiumUser?: boolean;
 }) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
@@ -44,6 +45,7 @@ export default function Dashboard(props: {
           user={props.user}
           guilds={props.guilds}
           currentId={props.currentId}
+          isPremiumUser={props.isPremiumUser}
         />
         <AppNavbar user={props.user} />
         {/* Main content */}

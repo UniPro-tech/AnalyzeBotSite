@@ -1,5 +1,7 @@
+import { headers } from "next/headers";
 import MainGrid from "@/components/dashboard/components/MainGrid";
 import type { StatCardProps } from "@/components/dashboard/components/StatCard";
+import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
 
 export default async function Home({
@@ -113,5 +115,26 @@ export default async function Home({
     },
   ];
 
-  return <MainGrid data={data} />;
+  const accounts = await auth.api.listUserAccounts({
+    headers: await headers(),
+  });
+  const isPremiumUser = accounts.some(
+    (account) => account.providerId === "unique",
+  );
+
+  const settingsCollection = dataDB.collection("guild_settings");
+  const settings = await settingsCollection.findOne(
+    { guild_id: id },
+    { projection: { is_premium: 1 } }, // is_premium だけを取得する
+  );
+  console.log(settings);
+
+  return (
+    <MainGrid
+      data={data}
+      isPremiumUser={isPremiumUser}
+      guildId={id}
+      isPremiumGuild={settings?.is_premium ?? false}
+    />
+  );
 }

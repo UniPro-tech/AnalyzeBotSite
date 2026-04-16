@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type { User } from "better-auth";
 import type { Guild } from "@/types/discord";
+import CardAlert from "./CardAlert";
 import MenuContent from "./MenuContent";
 import OptionsMenu from "./OptionsMenu";
 import SelectContent from "./SelectContent";
@@ -29,6 +30,7 @@ export default function SideMenu(props: {
   currentId: string;
   user: User;
   guilds: Guild[];
+  isPremiumUser?: boolean;
 }) {
   return (
     <Drawer
@@ -59,7 +61,7 @@ export default function SideMenu(props: {
         }}
       >
         <MenuContent />
-        {/*<CardAlert />*/}
+        <CardAlert isPremiumUser={props.isPremiumUser} />
       </Box>
       <Stack
         direction="row"

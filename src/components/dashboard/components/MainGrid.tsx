@@ -3,9 +3,20 @@ import { Chip } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import PremiumSuggestCard from "./PremiumSuggestCard";
 import StatCard, { type StatCardProps } from "./StatCard";
 
-export default function MainGrid({ data }: { data: StatCardProps[] }) {
+export default function MainGrid({
+  data,
+  isPremiumUser,
+  guildId,
+  isPremiumGuild,
+}: {
+  data: StatCardProps[];
+  guildId: string;
+  isPremiumUser?: boolean;
+  isPremiumGuild?: boolean;
+}) {
   return (
     <Box
       sx={{
@@ -30,10 +41,12 @@ export default function MainGrid({ data }: { data: StatCardProps[] }) {
             <StatCard {...card} />
           </Grid>
         ))}
+        {isPremiumUser && !isPremiumGuild && (
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+            <PremiumSuggestCard guildId={guildId} />
+          </Grid>
+        )}
         {/*
-        <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-          <HighlightedCard />
-        </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
           <SessionsChart />
         </Grid>
