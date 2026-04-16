@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../../globals.css";
 import { headers } from "next/headers";
-import { unauthorized } from "next/navigation";
+import { notFound, redirect, unauthorized } from "next/navigation";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { auth } from "@/lib/auth";
 import { dataDB } from "@/lib/db";
@@ -35,6 +35,23 @@ export default async function RootLayout({
       Authorization: `Bearer ${tokenSets.accessToken}`,
     },
   });
+  if (!discordGuildsRes.ok) {
+    switch (discordGuildsRes.status) {
+      case 404:
+        notFound();
+        break;
+      case 401:
+      case 403:
+        await auth.api.signOut({ headers: await headers() });
+        redirect("/login");
+        break;
+      default:
+        console.log(
+          `Discord API Error: ${discordGuildsRes.status} - ${await discordGuildsRes.text()}`,
+        );
+        throw new Error(`Discord API Error`);
+    }
+  }
   const collection = dataDB.collection("messages");
   const guildIdsInDb = await collection.distinct("guild_id");
   const guildIdSet = new Set(guildIdsInDb);
