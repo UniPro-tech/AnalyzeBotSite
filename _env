@@ -1,0 +1,8 @@
+BETTER_AUTH_SECRET="your-secret"
+BETTER_AUTH_URL=http://localhost:3000
+MONGODB_URI="mongodb://localhost:27017/database"
+
+DISCORD_CLIENT_ID="your-client-id"
+DISCORD_CLIENT_SECRET="your-secret"
+UNIQUE_CLIENT_ID="your-client-id"
+UNIQUE_CLIENT_SECRET="your-srcret"

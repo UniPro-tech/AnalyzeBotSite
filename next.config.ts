@@ -4,6 +4,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  experimental: {
+    authInterrupts: true,
+  },
 };
 
 const withMDX = createMDX({

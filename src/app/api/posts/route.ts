@@ -53,7 +53,7 @@ const sortPosts = <T extends { id: string; publishedAt: string }>(
 };
 
 export const GET = async () => {
-  const postDirectory = "src/app/posts";
+  const postDirectory = "src/app/(main)/posts";
   const postIndexDirs = await fs.promises.readdir(postDirectory);
   const posts = await Promise.all(
     postIndexDirs

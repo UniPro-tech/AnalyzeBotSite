@@ -15,6 +15,7 @@ export default function Header() {
     { href: "/howto", label: "使い方" },
     { href: "/commands", label: "コマンド一覧" },
     { href: "/invite", label: "導入する" },
+    { href: "/dashboard", label: "ダッシュボード" },
   ];
 
   return (
