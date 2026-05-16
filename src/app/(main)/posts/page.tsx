@@ -1,6 +1,7 @@
-import { headers } from "next/headers";
 import Link from "next/link";
 import { HomeStyles } from "@/constants/styles";
+import { getAllPosts } from "@/lib/post";
+export const dynamic = "force-static";
 
 type Post = {
   id: string;
@@ -37,12 +38,7 @@ const parsePage = (rawPage?: string) => {
 };
 
 export default async function PostsPage({ searchParams }: PostsPageProps) {
-  const headerStore = await headers();
-  const protocol = headerStore.get("x-forwarded-proto") || "http";
-  const host = headerStore.get("host");
-  const baseUrl = `${protocol}://${host}`;
-  const res = await fetch(`${baseUrl}/api/posts`);
-  const posts: Post[] = await res.json();
+  const posts: Post[] = await getAllPosts();
 
   const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
   const currentPage = Math.min(parsePage(searchParams?.page), totalPages);

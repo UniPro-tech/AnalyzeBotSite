@@ -1,11 +1,12 @@
-import { headers } from "next/headers";
 import Link from "next/link";
 import Script from "next/script";
 import type { Product, WebSite, WithContext } from "schema-dts";
 import { getLastModifiedDate } from "@/lib/git";
+import { getAllPosts } from "@/lib/post";
 import HeroSlideshow from "../../components/HeroSlideshow";
 import { HomeStyles } from "../../constants/styles";
 import { BASE_URL } from "../sitemap";
+export const dynamic = "force-static";
 
 type Post = {
   id: string;
@@ -64,12 +65,7 @@ const jsonLdWebsite: WithContext<WebSite> = {
 };
 
 export default async function Home() {
-  const headerStore = await headers();
-  const protocol = headerStore.get("x-forwarded-proto") || "http";
-  const host = headerStore.get("host");
-  const baseUrl = `${protocol}://${host}`;
-  const res = await fetch(`${baseUrl}/api/posts`);
-  const posts: Post[] = await res.json();
+  const posts: Post[] = await getAllPosts();
   const latestPosts = posts.slice(0, 5);
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
